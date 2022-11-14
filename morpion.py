@@ -85,5 +85,7 @@ def morpion():
                 print(j, end="")
             print()
 
-
-print(morpion())
+demande = input("Voulez-vous jouer au morpion ? Yes or No \n")
+while demande == "Yes":
+    print(morpion())
+    demande = input("Voulez-vous rejouer au morpion ? Yes or No \n")
