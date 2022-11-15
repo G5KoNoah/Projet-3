@@ -128,8 +128,8 @@ def morpion(nombreJoueur):
         
         #si nbTour est egal a 5
         if nbTour == 5 :
-            #alors on definit noWin a false
-            noWin = False
+            #on retourne "Egalite"
+            return "Egalite"
 
         #on affiche "Choix du joueur 2 :"
         print("Choix du joueur 2 : \n")
@@ -201,8 +201,7 @@ def morpion(nombreJoueur):
                 print(j, end="")
             print()
     
-    #on retourne "Egalite"
-    return "Egalite"
+    
 
 #on assigne a demande le string du retour de la fonction input
 demande = input("Voulez-vous jouer au morpion ? Yes or No \n")
