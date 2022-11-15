@@ -1,14 +1,20 @@
 #on definit une fonction input qui récupere l'entree d'un joueur
 
+#on definit une fonction display qui renvoie un affichage d'une liste de liste en tableau
 
-#on definit une fonction morpion
+#on definit une fonction morpion avec comme parametre le nombreJoueur 
 def morpion(nombreJoueur):
-    #on initialise un tableau avec 3 listes qui contiennent 3 caracteres vides  
+    #on initialise un tableau avec 3 listes qui contiennent 3 caracteres vides □
     tab = [[" □ " for i in range(3)] for j in range(3)]
+    #on initialise noWin a True
     noWin = True
+    #on initialise nbTour a 0
     nbTour = 0
+    #on definit vainqueur au string "Le vainqueur est : "
     vainqueur = "Le vainqueur est : "
+    #on assigne nomJoueurA le string du retour de la fonction input 
     nomJoueurA = input("Le nom du joueur 1 : \n")
+    #on initialise change a False
     change = False
     #si il n'y a qu'un joueur
     if nombreJoueur == 1 :
@@ -19,18 +25,30 @@ def morpion(nombreJoueur):
         #on assigne a nomJoueurB le string du retour de l'execution de la fonction input
         nomJoueurB = input("Le nom du joueur 2 : \n")
 
+    #on assigne symboleJoueurA le string du retour de la fonction input 
     symboleJoueurA = input("Symbole du joueur 1 : \n X ou O \n")
 
+    #tant que symboleJoueurA est different de "X" et "O" 
     while symboleJoueurA != "X" and symboleJoueurA != "O" :
+        #alors on reassigne  symboleJoueurA le string du retour de la fonction input 
         symboleJoueurA = input("Veuillez resaisir le symbole du joueur 1 : \n")
 
+    #si symboleJoueurA est egal a "X"
     if symboleJoueurA == "X" :
+        #alors
+        #on initialise symJouA a " X "
         symJouA = " X "
+        #on initialise symJouB a " O "
         symJouB = " O "
+    #sinon
     else :
-        symJouB = " X "
+        #alors
+        #on initialise symJouA a " O "
         symJouA = " O "
-
+        #on initialise symJouB a " X "
+        symJouB = " X "
+        
+    #on execute la fonction display
     for i in tab:
         for j in i:
             print(j, end="")
