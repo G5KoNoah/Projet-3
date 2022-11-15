@@ -34,6 +34,7 @@ def PFC(nombreJoueur,turnWin):
         #alors
         #on assigne a choixJoueurA le retour de l'execution de la fonction input
         choixJoueurA = int(input("choix du joueur 1 : \n pierre = 0 feuille = 1 ciseaux = 2 \n"))
+        #on vérifie si la fonction input renvoie les bonnes valeurs
         while choixJoueurA != 0 and choixJoueurA !=1 and choixJoueurA !=2 :
             choixJoueurA = int(input("resaisir le choix du joueur 1 : \n pierre = 0 feuille = 1 ciseaux = 2 \n"))
         #si il n'y a qu'un joueur

@@ -14,8 +14,12 @@ def morpion():
     while noWin:
         print("choixJoueur 1 : \n")
         ligne = int(input("ligne : \n"))
+        while ligne !=1 and ligne !=2 and ligne !=3 :
+            ligne = int(input("\n Veuillez resaisir la ligne : \n"))
         #on initialise colonne avec l'appelle de la fonction input
         colonne = int(input("Colonne : \n"))
+        while colonne !=1 and colonne !=2 and colonne !=3 :
+            ligne = int(input("\n Veuillez resaisir la colonne : \n"))
         #on affiche tab avec la fonction display
         lig = ligne-1
         col = colonne-1
