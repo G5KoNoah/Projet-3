@@ -53,82 +53,128 @@ def morpion(nombreJoueur):
         for j in i:
             print(j, end="")
         print()
-        
+
+    #tant que noWIn est vrai  
     while noWin:
+        #on incremente nbTour de 1
         nbTour = nbTour + 1 
-        print("choixJoueur 1 : \n")
+        #on affiche le string "Choix du joueur 1 :"
+        print("Choix du joueur 1 : \n")
+        #tant que change est faux
         while change == False:
+            #alors 
+            #on assigne ligne le string du retour de la fonction input
             ligne = input("ligne : \n")
+            #tant que ligne est different de 1, de 2 et de 3
             while ligne !="1" and ligne !="2" and ligne !="3" :
+                #alors on assigne ligne au string du retour de la fonction input
                 ligne = input("Veuillez resaisir la ligne : \n")
 
+            #on assigne colonne le string du retour de la fonction input
             colonne = input("Colonne : \n")
+            #tant que colonne est different de 1, de 2 et de 3
             while colonne !="1" and colonne !="2" and colonne !="3" :
+                #alors on assigne colonne au string du retour de la fonction input
                 ligne = input("Veuillez resaisir la colonne : \n")
+            #on definit lig a l'entier de ligne en retirant 1
             lig = int(ligne)-1
+            #on definit col a l'entier de colonne en retirant 1
             col = int(colonne)-1
+            #si l'element du tableau ayant comme indice lig et col est egal a □ 
             if tab[lig][col] == " □ " :
+                #alors on definit change a vrai
                 change = True
             else :
+            #sinon
+                #alors on affiche "Case deja modifiee"
                 print("Case dejà modifiée")
-
+        #on definit l'element du tableau ayant comme indice lig et col a symJouA
         tab[lig][col] = symJouA
+        #on definit change a false
         change = False
 
-        #ligne
+        """ligne"""
+        #pour i chaque valeur de 0 a 3
         for i in range(0,3):
-            if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==symJouA :
+            #alors
+            #  si l'element du tableau ayant comme indice i et 0 est egal a symJouA et
+            #  l'element du tableau ayant comme indice i et 1 est egal a symJouA et
+            #  l'element du tableau ayant comme indice i et 2 est egal a symJouA ou
+            #  l'element du tableau ayant comme indice 0 et i est egal a symJouA et
+            #  l'element du tableau ayant comme indice 1 et i est egal a symJouA et
+            #  l'element du tableau ayant comme indice 2 et i est egal a symJouA 
+            if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==symJouA or tab[0][i]==symJouA and tab[1][i]==symJouA and tab[2][i]==symJouA :
+                #alors 
+                # on appelle la fonction display
                 for i in tab:
                     for j in i:
                         print(j, end="")
                     print()
+                #on retourne les string vainqueur et nomJoueurA
                 return vainqueur + nomJoueurA
-        
-        
-        #colonne
-        for i in range(0,3):
-            if tab[0][i]==symJouA and tab[1][i]==symJouA and tab[2][i]==symJouA :
-                for i in tab:
-                    for j in i:
-                        print(j, end="")
-                    print()
-                return vainqueur + nomJoueurA
-
-
-        
-        #diagonale
+           
+        """diagonale"""
+        #  si l'element du tableau ayant comme indice 0 et 0 est egal a symJouA et
+            #  l'element du tableau ayant comme indice 1 et 1 est egal a symJouA et
+            #  l'element du tableau ayant comme indice 2 et 2 est egal a symJouA ou
+            #  l'element du tableau ayant comme indice 2 et 1 est egal a symJouA et
+            #  l'element du tableau ayant comme indice 1 et 1 est egal a symJouA et
+            #  l'element du tableau ayant comme indice 0 et 1 est egal a symJouA 
         if tab[0][0]==symJouA and tab[1][1]==symJouA and tab[2][2]==symJouA or tab[2][0]==symJouA and tab[1][1]==symJouA and tab[0][2]==symJouA :
+            #alors 
+            # on appelle la fonction display
             for i in tab:
                 for j in i:
                     print(j, end="")
                 print()
+            #on retourne les string vainqueur et nomJoueurA
             return vainqueur + nomJoueurA
 
-
+        #on appelle la fonction display
         for i in tab:
             for j in i:
                 print(j, end="")
             print()
         
+        #si nbTour est egal a 5
         if nbTour == 5 :
+            #alors on definit noWin a false
             noWin = False
 
-        print("choixJoueur 2 : \n")
-        
-        while change == False :
+        #on affiche "Choix du joueur 2 :"
+        print("Choix du joueur 2 : \n")
+
+        #tant que change est faux
+        while change == False:
+            #alors 
+            #on assigne ligne le string du retour de la fonction input
             ligne = input("ligne : \n")
+            #tant que ligne est different de 1, de 2 et de 3
             while ligne !="1" and ligne !="2" and ligne !="3" :
+                #alors on assigne ligne au string du retour de la fonction input
                 ligne = input("Veuillez resaisir la ligne : \n")
+
+            #on assigne colonne le string du retour de la fonction input
             colonne = input("Colonne : \n")
+            #tant que colonne est different de 1, de 2 et de 3
             while colonne !="1" and colonne !="2" and colonne !="3" :
+                #alors on assigne colonne au string du retour de la fonction input
                 ligne = input("Veuillez resaisir la colonne : \n")
+            #on definit lig a l'entier de ligne en retirant 1
             lig = int(ligne)-1
+            #on definit col a l'entier de colonne en retirant 1
             col = int(colonne)-1
+            #si l'element du tableau ayant comme indice lig et col est egal a □ 
             if tab[lig][col] == " □ " :
-                    change = True
+                #alors on definit change a vrai
+                change = True
             else :
+            #sinon
+                #alors on affiche "Case deja modifiee"
                 print("Case dejà modifiée")
+        #on definit l'element du tableau ayant comme indice lig et col a symJouB
         tab[lig][col] = symJouB
+        #on definit change a false
         change = False
 
         #ligne
