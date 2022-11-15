@@ -93,16 +93,11 @@ def morpion(nombreJoueur):
         #on definit change a false
         change = False
 
-        """ligne"""
+        """ligne et colonne"""
         #pour i chaque valeur de 0 a 3
         for i in range(0,3):
             #alors
-            #  si l'element du tableau ayant comme indice i et 0 est egal a symJouA et
-            #  l'element du tableau ayant comme indice i et 1 est egal a symJouA et
-            #  l'element du tableau ayant comme indice i et 2 est egal a symJouA ou
-            #  l'element du tableau ayant comme indice 0 et i est egal a symJouA et
-            #  l'element du tableau ayant comme indice 1 et i est egal a symJouA et
-            #  l'element du tableau ayant comme indice 2 et i est egal a symJouA 
+            #si les elements d'une ligne ou d'une colonne sont egales a symJouA 
             if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==symJouA or tab[0][i]==symJouA and tab[1][i]==symJouA and tab[2][i]==symJouA :
                 #alors 
                 # on appelle la fonction display
@@ -114,12 +109,7 @@ def morpion(nombreJoueur):
                 return vainqueur + nomJoueurA
            
         """diagonale"""
-        #  si l'element du tableau ayant comme indice 0 et 0 est egal a symJouA et
-            #  l'element du tableau ayant comme indice 1 et 1 est egal a symJouA et
-            #  l'element du tableau ayant comme indice 2 et 2 est egal a symJouA ou
-            #  l'element du tableau ayant comme indice 2 et 1 est egal a symJouA et
-            #  l'element du tableau ayant comme indice 1 et 1 est egal a symJouA et
-            #  l'element du tableau ayant comme indice 0 et 1 est egal a symJouA 
+        #  si les elements des diagonales sont egales a symJouA 
         if tab[0][0]==symJouA and tab[1][1]==symJouA and tab[2][2]==symJouA or tab[2][0]==symJouA and tab[1][1]==symJouA and tab[0][2]==symJouA :
             #alors 
             # on appelle la fonction display
@@ -177,44 +167,49 @@ def morpion(nombreJoueur):
         #on definit change a false
         change = False
 
-        #ligne
+        """Ligne et colonne"""
+        #pour i chaque valeur de 0 a 3
         for i in range(0,3):
-            if tab[i][0]==symJouB and tab[i][1]==symJouB and tab[i][2]==symJouB :
+            #alors
+            #si les elements d'une ligne ou d'une colonne sont egales a symJouB
+            if tab[i][0]==symJouB and tab[i][1]==symJouB and tab[i][2]==symJouB or tab[0][i]==symJouB and tab[1][i]==symJouB and tab[2][i]==symJouB:
+                #alors 
+                # on appelle la fonction display
                 for i in tab:
                     for j in i:
                         print(j, end="")
                     print()
+                #on retourne les string vainqueur et nomJoueurB
                 return vainqueur + nomJoueurB
-        
-        
-        #colonne
-        for i in range(0,3):
-            if tab[0][i]==symJouB and tab[1][i]==symJouB and tab[2][i]==symJouB :
-                for i in tab:
-                    for j in i:
-                        print(j, end="")
-                    print()
-                return vainqueur + nomJoueurB    
+          
     
-        #diagonale
+        """diagonale"""
+        #  si les elements des diagonales sont egales a symJouB
         if  tab[0][0]==symJouB and tab[1][1]==symJouB and tab[2][2]==symJouB or tab[2][0]==symJouB and tab[1][1]==symJouB and tab[0][2]==symJouB:
+            #alors 
+            # on appelle la fonction display
             for i in tab:
                 for j in i:
                     print(j, end="")
                 print()
+            #on retourne les string vainqueur et nomJoueurB
             return vainqueur + nomJoueurB
 
-            
+        # on appelle la fonction display    
         for i in tab:
             for j in i:
                 print(j, end="")
             print()
-        
-        if nbTour == 6 :
-            noWin = False
+    
+    #on retourne "Egalite"
     return "Egalite"
 
+#on assigne a demande le string du retour de la fonction input
 demande = input("Voulez-vous jouer au morpion ? Yes or No \n")
+#tant que demande est egal a "Yes"
 while demande == "Yes":
+    #alors
+    #on affiche la fonction morpion
     print(morpion(2))
+    #on assigne a demande le string du retour de la fonction input
     demande = input("Voulez-vous rejouer au morpion ? Yes or No \n")
