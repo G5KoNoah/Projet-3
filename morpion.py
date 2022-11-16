@@ -20,6 +20,7 @@ def morpion(nombreJoueur):
     if nombreJoueur == 1 :
         #alors on determine nomJoueurB a "IA"
         nomJoueurB = "IA"
+        config=""
     #sinon
     else :
         #on assigne a nomJoueurB le string du retour de l'execution de la fonction input
@@ -135,6 +136,70 @@ def morpion(nombreJoueur):
         print("Choix du joueur 2 : \n")
 
         if nomJoueurB=="IA" :
+
+            if nbTour==1:
+                if tab[0][0]==symJouA or tab[0][2]==symJouA or tab[2][0]==symJouA or tab[2][2]==symJouA :
+                    lig=1
+                    col=1
+                    config="coin"
+                if tab[1][1]==symJouA:
+                    lig=0
+                    col=0
+                    config="centre"
+                if tab[0][1]==symJouA or tab[1][0]==symJouA or tab[1][2]==symJouA or tab[2][1]==symJouA:
+                    lig=1
+                    col=1
+                    config="bord"
+            
+            if nbTour==2:
+                if config=="coin":
+                    if tab[0][0]==symJouA:
+                        lig
+                    elif tab[0][2]==symJouA :
+                    elif tab[2][0]==symJouA :
+                    else :
+                
+
+            for i in range(0,3):
+                if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==" □ ":
+                    lig=i
+                    col=2
+                if tab[i][0]==symJouA and tab[i][2]==symJouA and tab[i][1]==" □ ":
+                    lig=i
+                    col=1
+                if tab[i][1]==symJouA and tab[i][2]==symJouA and tab[i][0]==" □ ":
+                    lig=i
+                    col=0
+                if tab[0][i]==symJouA and tab[1][i]==symJouA and tab[2][i]==" □ ":
+                    lig=2
+                    col=i
+                if tab[0][i]==symJouA and tab[2][i]==symJouA and tab[1][i]==" □ ":
+                    lig=1
+                    col=i
+                if tab[1][i]==symJouA and tab[2][i]==symJouA and tab[0][i]==" □ ":
+                    lig=0
+                    col=i
+            
+
+            if tab[0][0]==symJouA and tab[1][1]==symJouA and tab[2][2]==" □ ":
+                lig=2
+                col=2 
+            if tab[0][0]==symJouA and tab[2][2]==symJouA and tab[1][1]==" □ ":
+                lig=1
+                col=1 
+            if tab[2][2]==symJouA and tab[1][1]==symJouA and tab[0][0]==" □ ":
+                lig=0
+                col=0
+            if tab[0][2]==symJouA and tab[1][1]==symJouA and tab[2][0]==" □ ":
+                lig=2
+                col=0 
+            if tab[0][2]==symJouA and tab[2][0]==symJouA and tab[1][1]==" □ ":
+                lig=1
+                col=1 
+            if tab[1][1]==symJouA and tab[2][0]==symJouA and tab[0][2]==" □ ":
+                lig=0
+                col=2
+
             for i in range(0,3):
                 if tab[i][0]==symJouB and tab[i][1]==symJouB and tab[i][2]==" □ ":
                     lig=i
@@ -154,6 +219,7 @@ def morpion(nombreJoueur):
                 if tab[1][i]==symJouB and tab[2][i]==symJouB and tab[0][i]==" □ ":
                     lig=0
                     col=i
+            
 
             if tab[0][0]==symJouB and tab[1][1]==symJouB and tab[2][2]==" □ ":
                 lig=2
@@ -246,11 +312,15 @@ def morpion(nombreJoueur):
     
 
 #on assigne a demande le string du retour de la fonction input
-demande = input("Voulez-vous jouer au morpion ? yes or No \n")
+demande = input("Voulez-vous jouer au morpion ? \n")
+while demande != "oui" :
+    demande = input("Voulez-vous jouer au morpion ? \n")
 #tant que demande est egal a "yes"
-while demande == "yes":
+while demande == "oui":
     #alors
     #on affiche la fonction morpion
-    print(morpion(2))
+    print(morpion(1))
     #on assigne a demande le string du retour de la fonction input
-    demande = input("Voulez-vous rejouer au morpion ? yes or No \n")
+    demande = input("Voulez-vous rejouer au morpion ? \n")
+    while demande != "oui" :
+        demande = input("Voulez-vous rejouer au morpion ? \n")
