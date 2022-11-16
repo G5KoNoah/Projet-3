@@ -134,34 +134,76 @@ def morpion(nombreJoueur):
         #on affiche "Choix du joueur 2 :"
         print("Choix du joueur 2 : \n")
 
-        #tant que change est faux
-        while change == False:
-            #alors 
-            #on assigne ligne le string du retour de la fonction input
-            ligne = input("ligne : \n")
-            #tant que ligne est different de 1, de 2 et de 3
-            while ligne !="1" and ligne !="2" and ligne !="3" :
-                #alors on assigne ligne au string du retour de la fonction input
-                ligne = input("Veuillez resaisir la ligne : \n")
+        if nomJoueurB=="IA" :
+            for i in range(0,3):
+                if tab[i][0]==symJouB and tab[i][1]==symJouB and tab[i][2]==" □ ":
+                    lig=i
+                    col=2
+                if tab[i][0]==symJouB and tab[i][2]==symJouB and tab[i][1]==" □ ":
+                    lig=i
+                    col=1
+                if tab[i][1]==symJouB and tab[i][2]==symJouB and tab[i][0]==" □ ":
+                    lig=i
+                    col=0
+                if tab[0][i]==symJouB and tab[1][i]==symJouB and tab[2][i]==" □ ":
+                    lig=2
+                    col=i
+                if tab[0][i]==symJouB and tab[2][i]==symJouB and tab[1][i]==" □ ":
+                    lig=1
+                    col=i
+                if tab[1][i]==symJouB and tab[2][i]==symJouB and tab[0][i]==" □ ":
+                    lig=0
+                    col=i
 
-            #on assigne colonne le string du retour de la fonction input
-            colonne = input("Colonne : \n")
-            #tant que colonne est different de 1, de 2 et de 3
-            while colonne !="1" and colonne !="2" and colonne !="3" :
-                #alors on assigne colonne au string du retour de la fonction input
-                ligne = input("Veuillez resaisir la colonne : \n")
-            #on definit lig a l'entier de ligne en retirant 1
-            lig = int(ligne)-1
-            #on definit col a l'entier de colonne en retirant 1
-            col = int(colonne)-1
-            #si l'element du tableau ayant comme indice lig et col est egal a □ 
-            if tab[lig][col] == " □ " :
-                #alors on definit change a vrai
-                change = True
-            else :
-            #sinon
-                #alors on affiche "Case deja modifiee"
-                print("Case dejà modifiée")
+            if tab[0][0]==symJouB and tab[1][1]==symJouB and tab[2][2]==" □ ":
+                lig=2
+                col=2 
+            if tab[0][0]==symJouB and tab[2][2]==symJouB and tab[1][1]==" □ ":
+                lig=1
+                col=1 
+            if tab[2][2]==symJouB and tab[1][1]==symJouB and tab[0][0]==" □ ":
+                lig=0
+                col=0
+            if tab[0][2]==symJouB and tab[1][1]==symJouB and tab[2][0]==" □ ":
+                lig=2
+                col=0 
+            if tab[0][2]==symJouB and tab[2][0]==symJouB and tab[1][1]==" □ ":
+                lig=1
+                col=1 
+            if tab[1][1]==symJouB and tab[2][0]==symJouB and tab[0][2]==" □ ":
+                lig=0
+                col=2  
+
+        #tant que change est faux
+        else :
+            #tant que change est faux
+            while change == False:
+                #alors 
+                #on assigne ligne le string du retour de la fonction input
+                ligne = input("ligne : \n")
+                #tant que ligne est different de 1, de 2 et de 3
+                while ligne !="1" and ligne !="2" and ligne !="3" :
+                    #alors on assigne ligne au string du retour de la fonction input
+                    ligne = input("Veuillez resaisir la ligne : \n")
+
+                #on assigne colonne le string du retour de la fonction input
+                colonne = input("Colonne : \n")
+                #tant que colonne est different de 1, de 2 et de 3
+                while colonne !="1" and colonne !="2" and colonne !="3" :
+                    #alors on assigne colonne au string du retour de la fonction input
+                    ligne = input("Veuillez resaisir la colonne : \n")
+                #on definit lig a l'entier de ligne en retirant 1
+                lig = int(ligne)-1
+                #on definit col a l'entier de colonne en retirant 1
+                col = int(colonne)-1
+                #si l'element du tableau ayant comme indice lig et col est egal a □ 
+                if tab[lig][col] == " □ " :
+                    #alors on definit change a vrai
+                    change = True
+                else :
+                #sinon
+                    #alors on affiche "Case deja modifiee"
+                    print("Case dejà modifiée")
         #on definit l'element du tableau ayant comme indice lig et col a symJouB
         tab[lig][col] = symJouB
         #on definit change a false
@@ -205,11 +247,11 @@ def morpion(nombreJoueur):
     return "Egalite"
 
 #on assigne a demande le string du retour de la fonction input
-demande = input("Voulez-vous jouer au morpion ? Yes or No \n")
-#tant que demande est egal a "Yes"
-while demande == "Yes":
+demande = input("Voulez-vous jouer au morpion ? yes or No \n")
+#tant que demande est egal a "yes"
+while demande == "yes":
     #alors
     #on affiche la fonction morpion
     print(morpion(2))
     #on assigne a demande le string du retour de la fonction input
-    demande = input("Voulez-vous rejouer au morpion ? Yes or No \n")
+    demande = input("Voulez-vous rejouer au morpion ? yes or No \n")
