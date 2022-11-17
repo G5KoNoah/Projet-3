@@ -137,11 +137,9 @@ def morpion(nombreJoueur):
 
         if nomJoueurB=="IA" :
             
-            for i in range(0,3):
-                for j in range(0,3) :
-                    if tab[i][j]== " □ ":
-                        lig=i
-                        col=j
+            r=first(tab)
+            lig=r[0]
+            col=r[1]
 
             if nbTour==1:
                 if tab[0][0]==symJouA or tab[0][2]==symJouA or tab[2][0]==symJouA or tab[2][2]==symJouA :
@@ -199,7 +197,17 @@ def morpion(nombreJoueur):
                         if tab[1][0]==symJouA :
                             lig=2
                             col=0
-                
+            
+            if config=="bord":
+                if nbTour==2:
+                    if tab[2][1]==symJouA and tab[0][2]==symJouA:
+                        lig=2
+                        col=2
+                    if tab[1][0]== symJouA and tab[1][2]==symJouA or tab[0][1]== symJouA and tab[2][1]==symJouA:
+                        lig=0
+                        col=0
+                    
+                        
 
             for i in range(0,3):
                 if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==" □ ":
@@ -350,18 +358,30 @@ def morpion(nombreJoueur):
                 print(j, end="")
             print()
     
-    
+def first(tab):
+    for i in range(0,3):
+        for j in range(0,3) :
+            if tab[i][j]== " □ ":
+                return i,j    
+
 
 #on assigne a demande le string du retour de la fonction input
 demande = input("Voulez-vous jouer au morpion ? \n")
-while demande != "oui" :
-    demande = input("Voulez-vous jouer au morpion ? \n")
-#tant que demande est egal a "yes"
-while demande == "oui":
-    #alors
-    #on affiche la fonction morpion
-    print(morpion(1))
-    #on assigne a demande le string du retour de la fonction input
-    demande = input("Voulez-vous rejouer au morpion ? \n")
+if demande=="non":
+    print("Dommage :(")
+else:
     while demande != "oui" :
+        demande = input("Voulez-vous jouer au morpion ? \n")
+    #tant que demande est egal a "yes"
+    joueur=int(input("Combien y a t-il de joueur ? \n"))
+    while joueur !=1 and joueur !=2:
+        joueur=int(input("Il ne peut y avoir qu'un ou deux joueurs \n"))
+    while demande == "oui":
+        #alors
+        #on affiche la fonction morpion
+        print(morpion(joueur))
+        #on assigne a demande le string du retour de la fonction input
         demande = input("Voulez-vous rejouer au morpion ? \n")
+        while demande != "oui" :
+            demande = input("Voulez-vous rejouer au morpion ? \n")
+        joueur=int(input("Combien y a t-il de joueur ? \n"))
