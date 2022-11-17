@@ -136,6 +136,12 @@ def morpion(nombreJoueur):
         print("Choix du joueur 2 : \n")
 
         if nomJoueurB=="IA" :
+            
+            for i in range(0,3):
+                for j in range(0,3) :
+                    if tab[i][j]== " □ ":
+                        lig=i
+                        col=j
 
             if nbTour==1:
                 if tab[0][0]==symJouA or tab[0][2]==symJouA or tab[2][0]==symJouA or tab[2][2]==symJouA :
@@ -153,11 +159,46 @@ def morpion(nombreJoueur):
             
             if nbTour==2:
                 if config=="coin":
-                    if tab[0][0]==symJouA:
-                        lig
+                    if tab[0][0]==symJouA   :
+                        if tab[2][2]==symJouA:
+                            lig =2
+                            col=1
+                        if tab[2][1]==symJouA :
+                            lig=2
+                            col=0
+                        if tab[1][2]==symJouA :
+                            lig=0
+                            col=2
                     elif tab[0][2]==symJouA :
+                        if tab[2][0]==symJouA:
+                            lig =2
+                            col=1
+                        if tab[2][1]==symJouA :
+                            lig=2
+                            col=2
+                        if tab[1][0]==symJouA :
+                            lig=0
+                            col=0
                     elif tab[2][0]==symJouA :
-                    else :
+                        if tab[0][2]==symJouA:
+                            lig =0
+                            col=1
+                        if tab[0][1]==symJouA :
+                            lig=0
+                            col=0
+                        if tab[1][2]==symJouA :
+                            lig=2
+                            col=2
+                    elif tab[2][2]:
+                        if tab[0][0]==symJouA:
+                            lig =0
+                            col=1
+                        if tab[0][1]==symJouA :
+                            lig=0
+                            col=2
+                        if tab[1][0]==symJouA :
+                            lig=2
+                            col=0
                 
 
             for i in range(0,3):
