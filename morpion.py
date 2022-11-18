@@ -1,3 +1,4 @@
+
 #on definit une fonction input qui récupere l'entree d'un joueur
 
 #on definit une fonction display qui renvoie un affichage d'une liste de liste en tableau
@@ -50,10 +51,7 @@ def morpion(nombreJoueur):
         symJouB = " X "
         
     #on execute la fonction display
-    for i in tab:
-        for j in i:
-            print(j, end="")
-        print()
+    expli(tab)
 
     #tant que noWIn est vrai  
     while noWin:
@@ -102,10 +100,7 @@ def morpion(nombreJoueur):
             if tab[i][0]==symJouA and tab[i][1]==symJouA and tab[i][2]==symJouA or tab[0][i]==symJouA and tab[1][i]==symJouA and tab[2][i]==symJouA :
                 #alors 
                 # on appelle la fonction display
-                for i in tab:
-                    for j in i:
-                        print(j, end="")
-                    print()
+                expli(tab)
                 #on retourne les string vainqueur et nomJoueurA
                 return vainqueur + nomJoueurA
            
@@ -114,18 +109,12 @@ def morpion(nombreJoueur):
         if tab[0][0]==symJouA and tab[1][1]==symJouA and tab[2][2]==symJouA or tab[2][0]==symJouA and tab[1][1]==symJouA and tab[0][2]==symJouA :
             #alors 
             # on appelle la fonction display
-            for i in tab:
-                for j in i:
-                    print(j, end="")
-                print()
+            expli(tab)
             #on retourne les string vainqueur et nomJoueurA
             return vainqueur + nomJoueurA
 
         #on appelle la fonction display
-        for i in tab:
-            for j in i:
-                print(j, end="")
-            print()
+        expli(tab)
         
         #si nbTour est egal a 5
         if nbTour == 5 :
@@ -332,10 +321,7 @@ def morpion(nombreJoueur):
             if tab[i][0]==symJouB and tab[i][1]==symJouB and tab[i][2]==symJouB or tab[0][i]==symJouB and tab[1][i]==symJouB and tab[2][i]==symJouB:
                 #alors 
                 # on appelle la fonction display
-                for i in tab:
-                    for j in i:
-                        print(j, end="")
-                    print()
+                expli(tab)
                 #on retourne les string vainqueur et nomJoueurB
                 return vainqueur + nomJoueurB
           
@@ -345,24 +331,28 @@ def morpion(nombreJoueur):
         if  tab[0][0]==symJouB and tab[1][1]==symJouB and tab[2][2]==symJouB or tab[2][0]==symJouB and tab[1][1]==symJouB and tab[0][2]==symJouB:
             #alors 
             # on appelle la fonction display
-            for i in tab:
-                for j in i:
-                    print(j, end="")
-                print()
+            expli(tab)
             #on retourne les string vainqueur et nomJoueurB
             return vainqueur + nomJoueurB
 
         # on appelle la fonction display    
-        for i in tab:
-            for j in i:
-                print(j, end="")
-            print()
+        expli(tab)
     
 def first(tab):
     for i in range(0,3):
         for j in range(0,3) :
             if tab[i][j]== " □ ":
                 return i,j    
+
+def expli(tab):
+    c=[1,2,3]
+    print(" 1  2  3")
+    t=0
+    for i in tab:
+        for j in i:
+            print(j, end="")
+        print( c[t])
+        t=t+1
 
 
 #on assigne a demande le string du retour de la fonction input
