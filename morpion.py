@@ -37,7 +37,7 @@ def morpion(nombreJoueur):
 
             colonne = input("Colonne : \n")
             while colonne !="1" and colonne !="2" and colonne !="3" :
-                ligne = input("Veuillez resaisir la colonne : \n")
+                colonne = input("Veuillez resaisir la colonne : \n")
             lig = int(ligne)-1
             col = int(colonne)-1
             if tab[lig][col] == " □ " :
@@ -126,6 +126,19 @@ def morpion(nombreJoueur):
                     if tab[1][0]== symJouA and tab[1][2]==symJouA or tab[0][1]== symJouA and tab[2][1]==symJouA:
                         lig=0
                         col=0
+            
+            if tab[0][1]==symJouA and tab[1][0]==symJouA and tab[0][]==" □ ":
+                lig=0
+                col=0
+            if tab[0][1]==symJouA and tab[1][2]==symJouA and tab[0][2]==" □ ":
+                lig=0
+                col=2
+            if tab[1][2]==symJouA and tab[2][1]==symJouA and tab[2][2]==" □ ":
+                lig=2
+                col=2
+            if tab[2][1]==symJouA and tab[1][0]==symJouA and tab[2][0]==" □ ":
+                lig=2
+                col=0
                                
             c=checkIA(symJouA,tab)
             if c !=None:
@@ -145,7 +158,7 @@ def morpion(nombreJoueur):
 
                 colonne = input("Colonne : \n")
                 while colonne !="1" and colonne !="2" and colonne !="3" :
-                    ligne = input("Veuillez resaisir la colonne : \n")
+                    colonne = input("Veuillez resaisir la colonne : \n")
                 lig = int(ligne)-1
                 col = int(colonne)-1
                 if tab[lig][col] == " □ " :
