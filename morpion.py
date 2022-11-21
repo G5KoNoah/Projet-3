@@ -1,9 +1,9 @@
 
 def morpion(nombreJoueur):
-    vainqueur = "Le vainqueur est : "
     tab = [[" □ " for i in range(3)] for j in range(3)]
     noWin = True
     nbTour = 0
+    vainqueur = "Le vainqueur est : "
     nomJoueurA = input("Le nom du joueur 1 : \n")
     change = False
 
@@ -47,8 +47,8 @@ def morpion(nombreJoueur):
         tab[lig][col] = symJouA
         change = False
 
-        c=checkWin(symJouA,tab)
         expli(tab)
+        c=checkWin(symJouA,tab)
         if c==symJouA:
             return vainqueur + nomJoueurA
 
@@ -165,8 +165,8 @@ def morpion(nombreJoueur):
                     change = True
                 else :
                     print("Case dejà modifiée")
+            change = False
         tab[lig][col] = symJouB
-        change = False
         expli(tab)
         c=checkWin(symJouB,tab)
         if c==symJouB:
