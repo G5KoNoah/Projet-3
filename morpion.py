@@ -127,7 +127,7 @@ def morpion(nombreJoueur):
                         lig=0
                         col=0
             
-            if tab[0][1]==symJouA and tab[1][0]==symJouA and tab[0][]==" □ ":
+            if tab[0][1]==symJouA and tab[1][0]==symJouA and tab[0][0]==" □ ":
                 lig=0
                 col=0
             if tab[0][1]==symJouA and tab[1][2]==symJouA and tab[0][2]==" □ ":
