@@ -5,6 +5,13 @@
 
 #on definit une fonction first avec comme parametre une liste et qui renvoie les indices de la premiere valeur du tableau qui est egal a " □ " 
 
+#on definit une fonction checkWin avec comme parametre un symbole et un tableau 
+    #elle verifie pour chaque colonne et chaque ligne du tableau que si il y a 3 parametre symbole elle renvoie le symbole
+    #elle verifie pour chaque diagonale du tableau que si il y a 3 parametre symbole elle renvoie le symbole
+
+#on definit une fonction checkIA avec comme parametre un symbole et un tableau
+    #elle verifie que pour chaque ligne, colonne et diagonale que si deux parametres symboles sont presents et que si la troisieme case est vide alors elle renvoie la ligne et la colonne de la case vide
+
 #on definit une fonction morpion avec comme parametre le nombreJoueur 
     #on initialise un tableau avec 3 listes qui contiennent 3 caracteres vides □
     #on initialise noWin a True
