@@ -44,8 +44,6 @@ def morpion(nombreJoueur):
             symJouA = " O "
             symJouB = " X "
         
-    
-
     while noWin:
         nbTour = nbTour + 1
         if nomJoueurA == "IA":
