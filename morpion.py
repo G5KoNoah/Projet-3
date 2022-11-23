@@ -4,46 +4,104 @@ def morpion(nombreJoueur):
     noWin = True
     nbTour = 0
     vainqueur = "Le vainqueur est : "
-    nomJoueurA = input("Le nom du joueur 1 : \n")
+    
     change = False
 
     if nombreJoueur == 1 :
-        nomJoueurB = "IA"
+        start=""
+        while start!="oui" and start!="non":
+            start=input("Voulez-vous jouer en premier ? \n")
+        if start == "oui":
+            nomJoueurA = input("Le nom du joueur  1: \n")
+            nomJoueurB = "IA"
+        else:
+            nomJoueurB = input("Le nom du joueur  2: \n")
+            nomJoueurA = "IA"
         config=""
     else :
+        nomJoueurA = input("Le nom du joueur  1: \n")
         nomJoueurB = input("Le nom du joueur 2 : \n")
 
-    symboleJoueurA = input("Symbole du joueur 1 : \n X ou O \n")
-
-    while symboleJoueurA != "X" and symboleJoueurA != "O" :
-        symboleJoueurA = input("Veuillez resaisir le symbole du joueur 1 : \n")
-
-    if symboleJoueurA == "X" :
-        symJouA = " X "
-        symJouB = " O "
-    else :
-        symJouA = " O "
-        symJouB = " X "
+    if start=="non":
+        symboleJoueurA=""
+        symboleJoueurB = input("Symbole du joueur 2 : \n X ou O \n")
+        while symboleJoueurB != "X" and symboleJoueurB != "O" :
+            symboleJoueurB = input("Veuillez resaisir le symbole du joueur 2 : \n")
+        if symboleJoueurB == "O" :
+            symJouA = " X "
+            symJouB = " O "
+        else :
+            symJouA = " O "
+            symJouB = " X "
+    else:
+        symboleJoueurA = input("Symbole du joueur 1 : \n X ou O \n")
+        while symboleJoueurA != "X" and symboleJoueurA != "O" :
+            symboleJoueurA = input("Veuillez resaisir le symbole du joueur 1 : \n")
+        if symboleJoueurA == "X" :
+            symJouA = " X "
+            symJouB = " O "
+        else :
+            symJouA = " O "
+            symJouB = " X "
         
-    expli(tab)
+    
 
     while noWin:
-        nbTour = nbTour + 1 
-        print("Choix du joueur 1 : \n")
-        while change == False:
-            ligne = input("ligne : \n")
-            while ligne !="1" and ligne !="2" and ligne !="3" :
-                ligne = input("Veuillez resaisir la ligne : \n")
+        nbTour = nbTour + 1
+        if nomJoueurA == "IA":
+            if nbTour==1:
+                lig=2
+                col=0
+            if nbTour==2:
+                if tab[1][1]==symJouB:
+                    lig=0
+                    col=2
+                else:
+                    if tab[1][0]==symJouB:
+                        lig=2
+                        col=2
+                    elif tab[0][0]==" □ ":
+                        config="win"
+                        lig=0
+                        col=0
+                    else:
 
-            colonne = input("Colonne : \n")
-            while colonne !="1" and colonne !="2" and colonne !="3" :
-                colonne = input("Veuillez resaisir la colonne : \n")
-            lig = int(ligne)-1
-            col = int(colonne)-1
-            if tab[lig][col] == " □ " :
-                change = True
-            else :
-                print("Case dejà modifiée")
+                        lig=2
+                        col=2
+            if nbTour==3:
+                if config=="win" and tab[2][2]==" □ ":
+                    lig=2
+                    col=2
+                else:
+                    lig=0
+                    col=2
+            c=checkIA(symJouB,tab)
+            if c !=None:
+                lig=c[0]
+                col=c[1]
+
+            c=checkIA(symJouA,tab)
+            if c!=None:
+                lig=c[0]
+                col=c[1]
+
+        else: 
+            expli(tab)
+            print("Choix du joueur 1 : \n")
+            while change == False:
+                ligne = input("ligne : \n")
+                while ligne !="1" and ligne !="2" and ligne !="3" :
+                    ligne = input("Veuillez resaisir la ligne : \n")
+
+                colonne = input("Colonne : \n")
+                while colonne !="1" and colonne !="2" and colonne !="3" :
+                    colonne = input("Veuillez resaisir la colonne : \n")
+                lig = int(ligne)-1
+                col = int(colonne)-1
+                if tab[lig][col] == " □ " :
+                    change = True
+                else :
+                    print("Case dejà modifiée")
         tab[lig][col] = symJouA
         change = False
 
