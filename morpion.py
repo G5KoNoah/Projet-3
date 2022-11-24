@@ -1,4 +1,8 @@
 
+"""lien"""
+import webbrowser 
+
+"""morpion"""
 def morpion(nombreJoueur):
     tab = [[" □ " for i in range(3)] for j in range(3)]
     noWin = True
@@ -33,6 +37,7 @@ def morpion(nombreJoueur):
         else :
             symJouA = " O "
             symJouB = " X "
+        expli(tab)
     else:
         symboleJoueurA = input("Symbole du joueur 1 : \n X ou O \n")
         while symboleJoueurA != "X" and symboleJoueurA != "O" :
@@ -43,6 +48,7 @@ def morpion(nombreJoueur):
         else :
             symJouA = " O "
             symJouB = " X "
+        expli(tab)
         
     while noWin:
         nbTour = nbTour + 1
@@ -63,7 +69,6 @@ def morpion(nombreJoueur):
                         lig=0
                         col=0
                     else:
-
                         lig=2
                         col=2
             if nbTour==3:
@@ -84,7 +89,7 @@ def morpion(nombreJoueur):
                 col=c[1]
 
         else: 
-            expli(tab)
+            
             print("Choix du joueur 1 : \n")
             while change == False:
                 ligne = input("ligne : \n")
@@ -106,6 +111,7 @@ def morpion(nombreJoueur):
         expli(tab)
         c=checkWin(symJouA,tab)
         if c==symJouA:
+            print("░██████╗░░██████╗░\n██╔════╝░██╔════╝░\n██║░░██╗░██║░░██╗░\n██║░░╚██╗██║░░╚██╗\n╚██████╔╝╚██████╔╝\n░╚═════╝░░╚═════╝░")
             return vainqueur + nomJoueurA
 
         
@@ -226,8 +232,10 @@ def morpion(nombreJoueur):
         expli(tab)
         c=checkWin(symJouB,tab)
         if c==symJouB:
+            print("░██████╗░░██████╗░\n██╔════╝░██╔════╝░\n██║░░██╗░██║░░██╗░\n██║░░╚██╗██║░░╚██╗\n╚██████╔╝╚██████╔╝\n░╚═════╝░░╚═════╝░")
             return vainqueur + nomJoueurB
 
+"""affichage"""
 def expli(tab):
     c=[1,2,3]
     print(" 1  2  3")
@@ -238,6 +246,7 @@ def expli(tab):
         print( c[t])
         t=t+1
 
+"""Verifie si trois symboles s'alignent"""
 def checkWin(symJoueur,tab):
     """ligne et colonne"""
     for i in range(0,3):
@@ -247,12 +256,14 @@ def checkWin(symJoueur,tab):
     if tab[0][0]==symJoueur and tab[1][1]==symJoueur and tab[2][2]==symJoueur or tab[2][0]==symJoueur and tab[1][1]==symJoueur and tab[0][2]==symJoueur :
         return symJoueur
 
+"""On definit la premiere case vide du morpion"""
 def first(tab):
     for i in range(0,3):
         for j in range(0,3) :
             if tab[i][j]== " □ ":
                 return i,j    
 
+"""Pour que l'IA remarque que s'il y a deux symboles identiques d'un joueur il rajoute le troisième si la case est vide"""
 def checkIA(symJoueur,tab):
     for i in range(0,3):
         if tab[i][0]==symJoueur and tab[i][1]==symJoueur and tab[i][2]==" □ ":
@@ -304,12 +315,19 @@ def checkIA(symJoueur,tab):
         lig=0
         col=2
         return lig,col
-    
+
+"""Start"""
 demande = input("Voulez-vous jouer au morpion ? \n")
 if demande=="non":
     print("Dommage :(")
 else:
     while demande != "oui" :
+        if demande=="one piece":
+            print("⣿⣿⣿⣿⡿⠛⠛⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⠛⠛⢿⣿⣿⣿⣿\n⣿⣿⣿⣿⠁⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠛⠛⠛⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⠀⠀⠀⠈⣿⣿⣿⣿\n⣿⠋⠉⠁⠀⠀⠀⠀⢴⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠈⠉⠻⣿\n⣿⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⠟⠁⣰⡆⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⡈⠻⣿⣿⣿⣿⡿⠏⠀⠀⠀⠀⠀⠀⠀⠀⣿\n⣿⣦⣄⣀⣤⣶⣄⠀⠀⠀⠀⠙⢿⡿⠃⠀⡾⠃⣰⠟⢠⡟⠀⠀⠀⠀⠀⠀⠀⠀⢿⡄⠈⢿⡀⠈⢿⡿⠋⠀⠀⠀⠀⣠⣶⣄⣀⣀⣴⣿\n⣿⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⢀⣿⣷⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣾⣷⣶⣾⣿⡄⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣼⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⠀⠀⠀⣀⣴⣶⣶⣄⠀⠀⠀⠀⠀⠀⣠⣴⣶⣦⣄⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⢰⣿⣿⣿⣿⣿⣷⡄⠀⠀⢀⣾⣿⣿⣿⣿⣿⣇⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠀⢸⣿⣿⣿⣿⣿⣿⠇⠀⠀⠘⣿⣿⣿⣿⣿⣿⡿⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⠀⠻⠿⣿⣿⠿⠋⠀⠀⠀⠀⠘⠿⢿⣿⡿⠿⠃⢀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⣀⠀⠀⠀⠀⠀⠐⢿⣿⠇⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⡿⠛⠲⠦⣤⣤⣤⣀⣀⣤⣤⣤⠴⠖⠛⣿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⢸⢧⣀⠀⢰⡇⠀⠈⠉⡏⠉⠀⢸⠀⠀⢀⣼⡇⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁⠀⠀⣟⠀⠈⠉⣾⠳⠶⠤⣤⣧⠤⠴⢾⡗⠉⠉⠀⢇⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⡿⠋⠉⠙⠻⠛⠁⠀⠀⠀⢀⡏⠑⢶⣤⡟⠀⠀⠀⠀⡇⠀⠀⠀⣷⣠⡴⠖⢻⠀⠀⠀⠀⠈⠻⠟⠋⠉⠙⢿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣷⠀⠀⠀⠈⠉⠛⠛⠛⠛⠛⠛⠋⠉⠀⠀⠀⣾⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣧⣀⣀⠀⠀⠀⠀⠐⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⠀⠀⠀⠀⢀⣀⣠⣾⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣼⣿⣿⣿⣿⣇⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿\n⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣤⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣤⣤⣤⣤⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿⣦⣤⣤⣴⣿⣿⣿⣿⣿⣿⣿")
+        if demande=="mario":
+            print("▒▒▒▒▒▒▒▒▒▄▄▄▄▒▒▒▒▒▒▒\n▒▒▒▒▒▒▄▀▀▓▓▓▀█▒▒▒▒▒▒\n▒▒▒▒▄▀▓▓▄██████▄▒▒▒▒\n▒▒▒▄█▄█▀░░▄░▄░█▀▒▒▒▒\n▒▒▄▀░██▄░░▀░▀░▀▄▒▒▒▒\n▒▒▀▄░░▀░▄█▄▄░░▄█▄▒▒▒\n▒▒▒▒▀█▄▄░░▀▀▀█▀▒▒▒▒▒\n▒▒▒▄▀▓▓▓▀██▀▀█▄▀▀▄▒▒\n▒▒█▓▓▄▀▀▀▄█▄▓▓▀█░█▒▒\n▒▒▀▄█░░░░░█▀▀▄▄▀█▒▒▒\n▒▒▒▄▀▀▄▄▄██▄▄█▀▓▓█▒▒\n▒▒█▀▓█████████▓▓▓█▒▒\n▒▒█▓▓██▀▀▀▒▒▒▀▄▄█▀▒▒\n▒▒▒▀▀▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒")
+        if demande=="tuto":
+            webbrowser.open("https://fr.wikihow.com/gagner-au-morpion")
         demande = input("Voulez-vous jouer au morpion ? \n")
     joueur=int(input("Combien y a t-il de joueur ? \n"))
     while joueur !=1 and joueur !=2:

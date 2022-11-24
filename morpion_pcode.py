@@ -17,47 +17,125 @@
     #on initialise noWin a True
     #on initialise nbTour a 0
     #on definit vainqueur au string "Le vainqueur est : "
-    #on assigne nomJoueurA le string du retour de la fonction input 
+    
     #on initialise change a False
     #si il n'y a qu'un joueur
-        #alors on determine nomJoueurB a "IA"
+        #alors
+        #on initialise start a un string vide
+        #tant que start est different de "oui" et de "non"
+            #alors on assigne start au retour de l'execution de la fonction input
+        #si start est egal a "oui"
+            #alors
+            #on assigne nomJoueurA le string du retour de l'execution de la fonction input 
+            #on determine nomJoueurB a "IA"
+        #sinon
+            #alors
+            #on assigne nomJoueurB le string du retour de l'execution de la fonction input
+            #on determine nomJoueurA a "IA"
+        #on initialise config a un string vide
     #sinon
+        #on assigne nomJoueurA le string du retour de l'execution de la fonction input 
         #on assigne a nomJoueurB le string du retour de l'execution de la fonction input
 
-    #on assigne symboleJoueurA le string du retour de la fonction input 
-
-    #tant que symboleJoueurA est different de "X" et "O" 
-        #alors on reassigne  symboleJoueurA le string du retour de la fonction input 
-
-    #si symboleJoueurA est egal a "X"
+    #si start est egal a "non"
         #alors
-        #on initialise symJouA a " X "
-        #on initialise symJouB a " O "
+        #on definit symboleJoueurA a un string vide
+        #on assigne  symboleJoueurB le string du retour de la fonction input
+        #tant que symboleJoueurB est different de "X" et "O" 
+            #alors on reassigne  symboleJoueurB le string du retour de la fonction input
+        #si symboleJoueurA est egal a "O"
+            #alors
+            #on initialise symJouA a " X "
+            #on initialise symJouB a " O "
+        #sinon
+            #alors
+            #on initialise symJouA a " O "
+            #on initialise symJouB a " X "
+            #on execute la fonction display
     #sinon
         #alors
-        #on initialise symJouA a " O "
-        #on initialise symJouB a " X "
-        
-    #on execute la fonction display
+        #on assigne  symboleJoueurA le string du retour de la fonction input
+        #tant que symboleJoueurA est different de "X" et "O" 
+            #alors on reassigne  symboleJoueurA le string du retour de la fonction input
+        #si symboleJoueurA est egal a "X"
+            #alors
+            #on initialise symJouA a " X "
+            #on initialise symJouB a " O "
+        #sinon
+            #alors
+            #on initialise symJouA a " O "
+            #on initialise symJouB a " X "
+            #on execute la fonction display
 
     #tant que noWIn est vrai  
         #on incremente nbTour de 1
-        #on affiche le string "Choix du joueur 1 :"
-        #tant que change est faux
-            #alors 
-            #on assigne ligne le string du retour de la fonction input
-            #tant que ligne est different de 1, de 2 et de 3
-                #alors on assigne ligne au string du retour de la fonction input
+        #si nomJoueurA est egal a "IA"
+            #alors
+            #si nbTour est egal a 1
+                #alors
+                #on definit lig a 2
+                #on definit col a 0
+            #si nbTour est egal a 2
+                #alors 
+                #si la case du centre est prise par symJouB
+                    #alors
+                    #on definit lig a 0
+                    #on definit col a 2
+                #sinon
+                    #alors
+                    #si la case au centre a gauche est prise par symJouB
+                        #alors
+                        #on definit lig a 2
+                        #on definit col a 2
+                    #sinon si la case en haut a gauche est vide
+                        #alors
+                        #on definit config a "win"
+                        #on definit lig a 0
+                        #on definit col a 0
+                    #sinon
+                        #alors
+                        #on definit lig a 2
+                        #on definit col a 2
+            #si nbTour est egal a 3
+                #alors
+                # si config est egal a "win" et que la case en bas a droite est vide
+                    #alors
+                    #on definit lig a 2
+                    #on definit col a 2
+                #sinon
+                    #alors
+                    #on definit lig a 0
+                    #on definit col a 2
 
-            #on assigne colonne le string du retour de la fonction input
-            #tant que colonne est different de 1, de 2 et de 3
-                #alors on assigne colonne au string du retour de la fonction input
-            #on definit lig a l'entier de ligne en retirant 1
-            #on definit col a l'entier de colonne en retirant 1
-            #si l'element du tableau ayant comme indice lig et col est egal a □ 
-                #alors on definit change a vrai
-            #sinon
-                #alors on affiche "Case deja modifiee"
+            #on definit c le retour de la fonction checkIA avec comme parametre symJouB et tab       
+            #si checkIA retourne une valeur
+                #alors
+                #on definit lig a c avec l'indice 0
+                #on definit col a c avec l'indice 1
+
+            #on definit c le retour de la fonction checkIA avec comme parametre symJouA et tab       
+            #si checkIA retourne une valeur
+                #alors
+                #on definit lig a c avec l'indice 0
+                #on definit col a c avec l'indice 1             
+        #sinon
+            #alors
+            #on affiche le string "Choix du joueur 1 :"
+            #tant que change est faux
+                #alors 
+                #on assigne ligne le string du retour de la fonction input
+                #tant que ligne est different de 1, de 2 et de 3
+                    #alors on assigne ligne au string du retour de la fonction input
+
+                #on assigne colonne le string du retour de la fonction input
+                #tant que colonne est different de 1, de 2 et de 3
+                    #alors on assigne colonne au string du retour de la fonction input
+                #on definit lig a l'entier de ligne en retirant 1
+                #on definit col a l'entier de colonne en retirant 1
+                #si l'element du tableau ayant comme indice lig et col est egal a □ 
+                    #alors on definit change a vrai
+                #sinon
+                    #alors on affiche "Case deja modifiee"
         #on definit l'element du tableau ayant comme indice lig et col a symJouA
         #on definit change a false
 
